@@ -1,938 +1,593 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Mniej politykom, więcej ludności</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f7f7f7;
-            color: #222;
-            line-height: 1.6;
-        }
-
-        /* ===== MENU ===== */
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: #8b1e3f;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.15);
-        }
-
-        nav {
-            max-width: 1100px;
-            margin: auto;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            color: white;
-            font-size: 22px;
-            font-weight: bold;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            opacity: 0.7;
-        }
-
-        /* ===== OGÓLNE ===== */
-
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 80px 20px;
-        }
-
-        .title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .title h2 {
-            font-size: 38px;
-            color: #8b1e3f;
-            margin-bottom: 10px;
-        }
-
-        .title p {
-            color: #666;
-            font-size: 18px;
-        }
-
-        /* ===== HERO ===== */
-
-        .hero {
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(
-                135deg,
-                #8b1e3f,
-                #b8325a
-            );
-            color: white;
-            padding: 40px 20px;
-        }
-
-        .hero-content {
-            max-width: 850px;
-        }
-
-        .hero h1 {
-            font-size: 65px;
-            line-height: 1.1;
-            margin-bottom: 25px;
-        }
-
-        .hero p {
-            font-size: 24px;
-            margin-bottom: 35px;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 15px 30px;
-            background: white;
-            color: #8b1e3f;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-            font-size: 18px;
-            transition: 0.3s;
-        }
-
-        .button:hover {
-            transform: scale(1.05);
-        }
-
-        /* ===== O NAS ===== */
-
-        .about {
-            background: white;
-        }
-
-        .about-box {
-            max-width: 850px;
-            margin: auto;
-            text-align: center;
-            font-size: 20px;
-        }
-
-        /* ===== PROGRAM ===== */
-
-        .program {
-            background: #f7f7f7;
-        }
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 18px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.13);
-        }
-
-        .icon {
-            font-size: 45px;
-            margin-bottom: 15px;
-        }
-
-        .card h3 {
-            color: #8b1e3f;
-            font-size: 24px;
-            margin-bottom: 12px;
-        }
-
-        .card p {
-            color: #555;
-        }
-
-        .card ul {
-            margin-top: 15px;
-            padding-left: 20px;
-            color: #555;
-        }
-        .card li {
-            margin-bottom: 8px;
-        }
-
-        /* ===== WARTOŚCI ===== */
-
-        .values {
-            background: white;
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .value {
-            text-align: center;
-            padding: 25px;
-            border-radius: 15px;
-            background: #f7f7f7;
-        }
-
-        .value span {
-            font-size: 40px;
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .value h3 {
-            color: #8b1e3f;
-            margin-bottom: 8px;
-        }
-
-        /* ===== ZESPÓŁ ===== */
-
-        .team {
-            background: #f7f7f7;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 18px;
-        }
-
-        .person {
-            background: white;
-            text-align: center;
-            padding: 25px 15px;
-            border-radius: 18px;
-            box-shadow: 0 5px 18px rgba(0,0,0,0.08);
-            transition: 0.3s;
-        }
-
-        .person:hover {
-            transform: translateY(-7px);
-        }
-
-        .avatar {
-            width: 75px;
-            height: 75px;
-            margin: 0 auto 15px;
-            border-radius: 50%;
-            background: #8b1e3f;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 30px;
-            font-weight: bold;
-        }
-
-        .person h3 {
-            color: #8b1e3f;
-            margin-bottom: 5px;
-        }
-
-        .person p {
-            color: #666;
-            font-size: 14px;
-        }
-
-        /* ===== DLACZEGO ===== */
-
-        .why {
-            background: #8b1e3f;
-            color: white;
-            text-align: center;
-        }
-
-        .why .title h2 {
-            color: white;
-        }
-
-        .why .title p {
-            color: #eee;
-        }
-
-        .why-box {
-            max-width: 800px;
-            margin: auto;
-            font-size: 20px;
-        }
-
-        .why-list {
-            list-style: none;
-            margin-top: 30px;
-        }
-
-        .why-list li {
-            background: rgba(255,255,255,0.12);
-            margin: 12px 0;
-            padding: 15px;
-            border-radius: 10px;
-        }
-
-        /* ===== KONTAKT / QR ===== */
-
-        .contact {
-            background: white;
-            text-align: center;
-        }
-
-        .contact-box {
-            max-width: 700px;
-            margin: auto;
-        }
-
-        .contact-box h3 {
-            color: #8b1e3f;
-            font-size: 30px;
-            margin-bottom: 15px;
-        }
-
-        /* ===== STOPKA ===== */
-
-        footer {
-            background: #222;
-            color: white;
-            text-align: center;
-            padding: 30px 20px;
-        }
-
-        footer p {
-            margin: 5px;
-        }
-
-        .slogan {
-            font-size: 22px;
-            font-weight: bold;
-            color: #ffb6c8;
-        }
-
-        /* ===== RESPONSIVE ===== */
-
-        @media (max-width: 900px) {
-
-            .hero h1 {
-                font-size: 48px;
-            }
-
-            .cards {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .values-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .team-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            nav ul {
-                gap: 12px;
-            }
-        }
-
-        @media (max-width: 600px) {
-
-            nav {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .hero {
-                min-height: 80vh;
-            }
-
-            .hero h1 {
-                font-size: 40px;
-            }
-
-            .hero p {
-                font-size: 19px;
-            }
-    .cards,
-            .values-grid,
-            .team-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .title h2 {
-                font-size: 32px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MPWL – Mniej Politykom, Więcej Ludności. Poznaj nasz program i zespół.">
+  <title>MPWL | Mniej Politykom, Więcej Ludności</title>
+
+  <style>
+    :root {
+      --red: #e63946;
+      --dark-red: #a4162a;
+      --dark: #191923;
+      --light: #fff8f8;
+      --white: #ffffff;
+      --gray: #666674;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.7;
+    }
+
+    header {
+      background: var(--dark);
+      color: var(--white);
+      padding: 18px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      color: var(--red);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #ff8790;
+    }
+
+    .hero {
+      min-height: 490px;
+      padding: 85px 7%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      background:
+        radial-gradient(circle at 85% 20%, #56212d 0, transparent 35%),
+        linear-gradient(135deg, #191923, #30151e);
+      color: white;
+    }
+
+    .tag {
+      background: var(--red);
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 8vw, 82px);
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: var(--red);
+    }
+
+    .hero p {
+      max-width: 650px;
+      font-size: 18px;
+      color: #e3dce0;
+      margin-bottom: 28px;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--red);
+      color: white;
+      text-decoration: none;
+      padding: 13px 24px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .button:hover {
+      background: var(--dark-red);
+      transform: translateY(-2px);
+    }
+
+    section {
+      padding: 70px 7%;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(28px, 5vw, 42px);
+      margin-bottom: 10px;
+    }
+
+    .section-heading p {
+      color: var(--gray);
+      max-width: 650px;
+      margin: auto;
+    }
+
+    .red-line {
+      height: 5px;
+      width: 65px;
+      background: var(--red);
+      border-radius: 5px;
+      margin: 15px auto;
+    }
+
+    .intro {
+      max-width: 850px;
+      margin: auto;
+      text-align: center;
+      font-size: 17px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .card {
+      background: white;
+      padding: 28px;
+      border-radius: 14px;
+      border: 1px solid #eee0e3;
+      box-shadow: 0 5px 20px rgba(40, 10, 20, 0.04);
+      border-top: 4px solid var(--red);
+    }
+
+    .card .icon {
+      font-size: 35px;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      font-size: 23px;
+      margin-bottom: 12px;
+    }
+
+    .card ul {
+      padding-left: 20px;
+      color: #494953;
+    }
+
+    .card li {
+      margin-bottom: 8px;
+    }
+
+    .note {
+      font-size: 13px;
+      color: var(--gray);
+      margin-top: 15px;
+    }
+
+    .values {
+      background: var(--dark);
+      color: white;
+    }
+
+    .values .section-heading p {
+      color: #d2cbd0;
+    }
+ .value-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .value {
+      text-align: center;
+      background: #292934;
+      border-radius: 12px;
+      padding: 24px 10px;
+    }
+
+    .value strong {
+      display: block;
+      color: #ff6977;
+      font-size: 17px;
+      margin-top: 8px;
+    }
+
+    .value span {
+      font-size: 30px;
+    }
+
+    .team {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .person {
+      background: white;
+      border: 1px solid #eee0e3;
+      padding: 24px 18px;
+      text-align: center;
+      border-radius: 12px;
+    }
+
+    .avatar {
+      background: #ffe3e6;
+      border-radius: 50%;
+      width: 65px;
+      height: 65px;
+      margin: 0 auto 12px;
+      display: grid;
+      place-items: center;
+      font-size: 29px;
+    }
+
+    .person h3 {
+      font-size: 18px;
+    }
+
+    .person p {
+      color: var(--gray);
+      font-size: 14px;
+    }
+
+    .democracy {
+      max-width: 850px;
+      margin: 35px auto 0;
+      padding: 25px;
+      background: #ffe9eb;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .questions {
+      background: #f0e9eb;
+      text-align: center;
+    }
+
+    .questions p {
+      max-width: 650px;
+      margin: 0 auto 22px;
+      color: #494953;
+    }
+
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 30px 7%;
+    }
+
+    footer strong {
+      color: var(--red);
+      font-size: 24px;
+      letter-spacing: 2px;
+    }
+
+    footer p {
+      color: #d2cbd0;
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        justify-content: center;
+        text-align: center;
+      }
+
+      nav {
+        justify-content: center;
+      }
+
+      .hero {
+        padding: 65px 6%;
+      }
+
+      section {
+        padding: 55px 6%;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .value-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .team {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- ===== MENU ===== -->
+  <header>
+    <div class="logo">MPWL</div>
 
-<header>
     <nav>
-
-        <div class="logo">
-            NASZA PARTIA
-        </div>
-
-        <ul>
-            <li><a href="#onas">O nas</a></li>
-            <li><a href="#program">Program</a></li>
-            <li><a href="#wartosci">Wartości</a></li>
-            <li><a href="#zespol">Zespół</a></li>
-        </ul>
-
+      <a href="#o-nas">O nas</a>
+      <a href="#program">Program</a>
+      <a href="#wartosci">Wartości</a>
+      <a href="#zespol">Zespół</a>
     </nav>
-</header>
+  </header>
 
+  <main>
 
-<!-- ===== GŁÓWNA SEKCJA ===== -->
+    <section class="hero">
+      <div class="tag">POZNAJ NASZ PROGRAM</div>
 
-<section class="hero">
+      <h1>MPWL<br>
+        <span>Mniej politykom,<br>więcej ludności.</span>
+      </h1>
 
-    <div class="hero-content">
+      <p>
+        Poznaj nasze propozycje dotyczące równości, ochrony zdrowia,
+        edukacji, pracy, mieszkań i bezpieczeństwa.
+      </p>
 
-        <h1>
-            Mniej politykom,<br>
-            więcej ludności.
-        </h1>
+      <a href="#program" class="button">Poznaj program ↓</a>
+    </section>
 
+    <section id="o-nas">
+      <div class="section-heading">
+        <h2>Kim jesteśmy?</h2>
+        <div class="red-line"></div>
+      </div>
+
+      <div class="intro">
         <p>
-            Poznaj nasz program i zobacz, jakie wartości są dla nas ważne.
+          MPWL to projekt partii o profilu lewicowym.
+          Skupiamy się na sprawach społecznych, równych prawach
+          oraz dostępie do podstawowych usług publicznych.
+          Chcemy przedstawiać konkretne propozycje i otwarcie
+          rozmawiać o ich zaletach, kosztach i możliwych trudnościach.
         </p>
+      </div>
+    </section>
 
-        <a href="#program" class="button">
-            Poznaj program ↓
-        </a>
+    <section id="program">
+      <div class="section-heading">
+        <h2>Nasze postulaty</h2>
+        <div class="red-line"></div>
+        <p>
+          Pięć obszarów naszego programu i propozycje,
+          które chcemy przedstawić do dyskusji.
+        </p>
+      </div>
 
-    </div>
+      <div class="cards">
 
-</section>
+        <article class="card">
+          <div class="icon">🏳️‍🌈</div>
+          <h3>Równość i prawa</h3>
+          <ul>
+            <li>Przeciwdziałanie dyskryminacji.</li>
+            <li>Równe prawa niezależnie od orientacji seksualnej.</li>
+            <li>Wsparcie osób zagrożonych wykluczeniem społecznym.</li>
+          </ul>
+        </article>
+ <article class="card">
+          <div class="icon">🏥</div>
+          <h3>Ochrona zdrowia</h3>
+          <ul>
+            <li>Lepsze warunki pracy personelu medycznego.</li>
+            <li>Poprawa wynagrodzeń w ochronie zdrowia.</li>
+            <li>Rozważenie dodatków mieszkaniowych w regionach
+              z niedoborem lekarzy.</li>
+          </ul>
+        </article>
 
+        <article class="card">
+          <div class="icon">🎓</div>
+          <h3>Edukacja</h3>
+          <ul>
+            <li>Więcej praktycznych umiejętności w nauczaniu.</li>
+            <li>Większe wsparcie dla studentów.</li>
+            <li>Lepsze przygotowanie do dorosłego życia i pracy.</li>
+          </ul>
+        </article>
 
-<!-- ===== O NAS ===== -->
+        <article class="card">
+          <div class="icon">🏠</div>
+          <h3>Praca i mieszkania</h3>
+          <ul>
+            <li>Lepsze warunki zatrudnienia.</li>
+            <li>Rozwiązania wspierające osoby rozpoczynające
+              samodzielne życie.</li>
+            <li>Dyskusja o dostępności mieszkań i kosztach życia.</li>
+          </ul>
+        </article>
 
-<section class="about" id="onas">
+        <article class="card">
+          <div class="icon">🛡️</div>
+          <h3>Bezpieczeństwo</h3>
+          <ul>
+            <li>Bezpieczeństwo Polski.</li>
+            <li>Współpraca z sojusznikami w NATO.</li>
+            <li>Odpowiedzialne podejście do bezpieczeństwa państwa.</li>
+          </ul>
+        </article>
 
-    <div class="container">
+        <article class="card">
+          <div class="icon">💬</div>
+          <h3>Otwarta dyskusja</h3>
+          <ul>
+            <li>Rozmowy o potrzebach mieszkańców.</li>
+            <li>Jasne wyjaśnianie proponowanych rozwiązań.</li>
+            <li>Analizowanie kosztów i sposobów realizacji postulatów.</li>
+          </ul>
+        </article>
 
-        <div class="title">
+      </div>
 
-            <h2>Kim jesteśmy?</h2>
+      <p class="note" style="text-align:center">
+        Przedstawione punkty są propozycjami programowymi projektu MPWL.
+        Szczegółowe koszty i sposoby realizacji wymagają opracowania.
+      </p>
+    </section>
 
-            <p>
-                Poznaj naszą drużynę i nasze najważniejsze założenia.
-            </p>
+    <section id="wartosci" class="values">
+      <div class="section-heading">
+        <h2>Nasze wartości</h2>
+        <div class="red-line"></div>
+        <p>
+          Pięć tematów, które wyznaczają kierunki naszego programu.
+        </p>
+      </div>
 
+      <div class="value-grid">
+        <div class="value">
+          <span>⚖️</span>
+          <strong>Równość</strong>
         </div>
 
-        <div class="about-box">
-
-            <p>
-                Jesteśmy pięcioosobowym zespołem, który przygotował
-                własny program dotyczący spraw ważnych dla społeczeństwa.
-                Chcemy przedstawiać nasze pomysły w prosty i przejrzysty sposób.
-            </p>
-
-            <br>
-
-            <p>
-                Nasz program obejmuje między innymi równość,
-                ochronę zdrowia, edukację, prawa pracownicze,
-                mieszkalnictwo oraz bezpieczeństwo.
-            </p>
-
+        <div class="value">
+          <span>❤️</span>
+          <strong>Zdrowie</strong>
         </div>
 
-    </div>
-
-</section>
-
-
-<!-- ===== PROGRAM ===== -->
-
-<section class="program" id="program">
-
-    <div class="container">
-
-        <div class="title">
-
-            <h2>Nasz program</h2>
-
-            <p>
-                Najważniejsze obszary, którymi chcemy się zajmować.
-            </p>
-
+        <div class="value">
+          <span>📚</span>
+          <strong>Edukacja</strong>
         </div>
 
-
-        <div class="cards">
-
-
-            <!-- RÓWNOŚĆ -->
-
-            <div class="card">
-
-                <div class="icon">🏳️‍🌈</div>
-
-                <h3>Równość</h3>
-
-                <p>
-                    Chcemy, aby każdy człowiek był traktowany
-                    z szacunkiem i miał równe prawa.
-                </p>
-
-                <ul>
-                    <li>Przeciwdziałanie dyskryminacji</li>
-                    <li>Równe traktowanie</li>
-                    <li>Szacunek dla różnorodności</li>
-                </ul>
-
-            </div>
-
-
-            <!-- ZDROWIE -->
-
-            <div class="card">
-
-                <div class="icon">🏥</div>
-
-                <h3>Ochrona zdrowia</h3>
-
-                <p>
-                    Zależy nam na sprawnym systemie ochrony zdrowia
-                    i dobrych warunkach pracy personelu medycznego.
-                </p>
-
-                <ul>
-                    <li>Lepsze warunki pracy</li>
-                    <li>Lepsze wynagrodzenia</li>
-                    <li>Wsparcie miejsc z brakami kadrowymi</li>
-                </ul>
-
-            </div>
-
-
-            <!-- EDUKACJA -->
-
-            <div class="card">
-
-                <div class="icon">🎓</div>
-
-                <h3>Edukacja</h3>
-
-                <p>
-                    Edukacja powinna dawać młodym ludziom
-                    możliwości rozwoju i zdobywania nowych umiejętności.
-                </p>
-
-                <ul>
-                    <li>Rozwój kompetencji</li>
-                    <li>Programy wymian</li>
-                    <li>Wsparcie uczniów</li>
-                </ul>
-
-            </div>
-
-
-            <!-- PRACA -->
-
-            <div class="card">
-
-                <div class="icon">💼</div>
-
-                <h3>Praca</h3>
-
-                <p>
-                    Chcemy zwracać uwagę na prawa pracowników,
-                    wynagrodzenia i bezpieczeństwo zatrudnienia.
-                </p>
-    <ul>
-                    <li>Prawa pracownicze</li>
-                    <li>Godne wynagrodzenie</li>
-                    <li>Dobre warunki pracy</li>
-                </ul>
-
-            </div>
-
-
-            <!-- MIESZKANIA -->
-
-            <div class="card">
-
-                <div class="icon">🏠</div>
-
-                <h3>Mieszkania</h3>
-
-                <p>
-                    Dostęp do mieszkania jest ważnym elementem
-                    bezpieczeństwa życiowego.
-                </p>
-
-                <ul>
-                    <li>Wsparcie mieszkaniowe</li>
-                    <li>Pomoc w miejscach z brakami kadrowymi</li>
-                    <li>Rozwój mieszkalnictwa</li>
-                </ul>
-
-            </div>
-
-
-            <!-- BEZPIECZEŃSTWO -->
-
-            <div class="card">
-
-                <div class="icon">🛡️</div>
-
-                <h3>Bezpieczeństwo</h3>
-
-                <p>
-                    Bezpieczeństwo państwa i społeczeństwa
-                    jest jednym z ważnych elementów naszego programu.
-                </p>
-
-                <ul>
-                    <li>Współpraca międzynarodowa</li>
-                    <li>Współpraca w ramach NATO</li>
-                    <li>Bezpieczeństwo społeczeństwa</li>
-                </ul>
-
-            </div>
-
+        <div class="value">
+          <span>🏡</span>
+          <strong>Godne życie</strong>
         </div>
 
-    </div>
+        <div class="value">
+          <span>🛡️</span>
+          <strong>Bezpieczeństwo</strong>
+        </div>
+      </div>
+    </section>
 
-</section>
+    <section id="zespol">
+      <div class="section-heading">
+        <h2>Nasz zespół</h2>
+        <div class="red-line"></div>
+        <p>
+          Pięć osób, podział obowiązków i wspólna odpowiedzialność
+          za przygotowanie projektu.
+        </p>
+      </div>
 
+      <div class="team">
 
-<!-- ===== WARTOŚCI ===== -->
-
-<section class="values" id="wartosci">
-
-    <div class="container">
-
-        <div class="title">
-
-            <h2>Nasze wartości</h2>
-
-            <p>
-                Cztery wartości, które są podstawą naszego programu.
-            </p>
-
+        <div class="person">
+          <div class="avatar">👤</div>
+          <h3>Osoba 1</h3>
+          <p>Przewodniczący/a</p>
+          <p>Koordynacja pracy zespołu.</p>
         </div>
 
-
-        <div class="values-grid">
-
-
-            <div class="value">
-
-                <span>⚖️</span>
-
-                <h3>Równość</h3>
-
-                <p>
-                    Każdy powinien być traktowany z szacunkiem.
-                </p>
-
-            </div>
-
-
-            <div class="value">
-
-                <span>🤝</span>
-
-                <h3>Solidarność</h3>
-
-                <p>
-                    Wspieranie osób i grup, które potrzebują pomocy.
-                </p>
-
-            </div>
-
-
-            <div class="value">
-
-                <span>📚</span>
-
-                <h3>Rozwój</h3>
-
-                <p>
-                    Inwestowanie w edukację, ludzi i przyszłość.
-                </p>
-
-            </div>
-
-
-            <div class="value">
-
-                <span>🛡️</span>
-
-                <h3>Bezpieczeństwo</h3>
-
-                <p>
-                    Dbanie o bezpieczeństwo społeczeństwa i państwa.
-                </p>
-
-            </div>
-
-
+        <div class="person">
+          <div class="avatar">🎤</div>
+          <h3>Osoba 2</h3>
+          <p>Rzecznik prasowy</p>
+          <p>Przedstawianie programu.</p>
         </div>
 
-    </div>
-
-</section>
-
-
-<!-- ===== ZESPÓŁ ===== -->
-
-<section class="team" id="zespol">
-
-    <div class="container">
-
-        <div class="title">
-
-            <h2>Nasz zespół</h2>
-
-            <p>
-                Pięć osób odpowiedzialnych za przygotowanie projektu.
-            </p>
-
+        <div class="person">
+          <div class="avatar">📋</div>
+          <h3>Osoba 3</h3>
+          <p>Program partii</p>
+          <p>Opracowanie postulatów.</p>
         </div>
 
-
-        <div class="team-grid">
-
-
-            <div class="person">
-
-                <div class="avatar">
-                    A
-                </div>
-
-                <h3>Alina</h3>
-
-                <p>
-                    Przewodnicząca
-                </p>
-
-            </div>
-
-
-            <div class="person">
-
-                <div class="avatar">
-                    N
-                </div>
-
-                <h3>Nelli</h3>
-
-                <p>
-                    Rzeczniczka prasowa
-                </p>
-
-            </div>
-
-
-            <div class="person">
-
-                <div class="avatar">
-                    K
-                </div>
-
-                <h3>Krysia</h3>
-
-                <p>
-                    Koordynatorka programu
-                </p>
-
-            </div>
-
-
-            <div class="person">
-
-                <div class="avatar">
-                    B
-                </div>
-
-                <h3>Basia</h3>
-
-                <p>
-                    Koordynatorka kampanii
-                </p>
-
-            </div>
-
-
-            <div class="person">
-
-                <div class="avatar">
-                    M
-                </div>
-    <h3>Mira</h3>
-
-                <p>
-                    Sekretarzyni
-                </p>
-
-            </div>
-
-
+        <div class="person">
+          <div class="avatar">📣</div>
+          <h3>Osoba 4</h3>
+          <p>Organizacja kampanii</p>
+          <p>Przygotowanie prezentacji i materiałów.</p>
+        </div>
+ <div class="person">
+          <div class="avatar">📝</div>
+          <h3>Osoba 5</h3>
+          <p>Sekretarz/sekretarzyni</p>
+          <p>Dokumentacja i organizacja spotkań.</p>
         </div>
 
-    </div>
+      </div>
 
-</section>
+      <div class="democracy">
+        <h3>Decyzje podejmujemy wspólnie</h3>
+        <p>
+          W naszym pięcioosobowym zespole omawiamy propozycje
+          i głosujemy. Przy zasadzie zwykłej większości potrzeba
+          co najmniej 3 głosów na 5.
+        </p>
+      </div>
+    </section>
 
+    <section class="questions">
+      <div class="section-heading">
+        <h2>Masz pytanie?</h2>
+        <div class="red-line"></div>
+      </div>
 
-<!-- ===== INFORMACJA ===== -->
+      <p>
+        Chętnie przedstawimy szczegóły naszego programu
+        i porozmawiamy o jego możliwych skutkach.
+        Zapoznaj się z propozycjami i wyciągnij własne wnioski.
+      </p>
 
-<section class="why">
+      <a href="#program" class="button">Wróć do programu ↑</a>
+    </section>
 
-    <div class="container">
+  </main>
 
-        <div class="title">
-
-            <h2>Co jest dla nas ważne?</h2>
-
-            <p>
-                Nasz projekt opiera się na kilku podstawowych założeniach.
-            </p>
-
-        </div>
-
-
-        <div class="why-box">
-
-            <ul class="why-list">
-
-                <li>
-                    ⚖️ Równe traktowanie i przeciwdziałanie dyskryminacji
-                </li>
-
-                <li>
-                    🏥 Sprawna ochrona zdrowia i dobre warunki pracy
-                </li>
-
-                <li>
-                    🎓 Możliwości rozwoju i edukacji
-                </li>
-
-                <li>
-                    💼 Poszanowanie praw pracowników
-                </li>
-
-                <li>
-                    🏠 Rozwiązania wspierające dostęp do mieszkań
-                </li>
-
-                <li>
-                    🛡️ Bezpieczeństwo i współpraca międzynarodowa
-                </li>
-
-            </ul>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ===== KONTAKT ===== -->
-
-<section class="contact">
-
-    <div class="container">
-
-        <div class="contact-box">
-
-            <h3>
-                Poznaj cały program
-            </h3>
-
-            <p>
-                Ta strona przedstawia najważniejsze elementy naszego
-                projektu. Przejrzyj wszystkie informacje i zapoznaj się
-                z poszczególnymi propozycjami.
-            </p>
-
-            <br>
-
-            <p>
-                <strong>Mniej politykom, więcej ludności.</strong>
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ===== STOPKA ===== -->
-
-<footer>
-
-    <p class="slogan">
-        Mniej politykom, więcej ludności.
-    </p>
-
-    <p>
-        Projekt szkolny
-    </p>
-
-    <p>
-        © 2026
-    </p>
-
-</footer>
-
+  <footer>
+    <strong>MPWL</strong>
+    <p>Mniej politykom, więcej ludności.</p>
+    <p>Szkolny projekt edukacyjny • 2026</p>
+  </footer>
 
 </body>
 </html>
