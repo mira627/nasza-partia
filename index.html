@@ -7,340 +7,345 @@
   <title>MPWL | Mniej Politykom, Więcej Ludności</title>
 
   <style>
-    :root {
-      --red: #e63946;
-      --dark-red: #a4162a;
-      --dark: #191923;
-      --light: #fff8f8;
-      --white: #ffffff;
-      --gray: #666674;
-    }
+  :root {
+    --red: #4d91bd;
+    --dark-red: #326f98;
+    --dark: #183b56;
+    --light: #faf7f0;
+    --white: #ffffff;
+    --gray: #66727c;
+  }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-    html {
-      scroll-behavior: smooth;
-    }
+  html {
+    scroll-behavior: smooth;
+  }
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--light);
-      color: var(--dark);
-      line-height: 1.7;
-    }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--light);
+    color: var(--dark);
+    line-height: 1.7;
+  }
 
+  header {
+    background: var(--white);
+    color: var(--dark);
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #e6dfd2;
+  }
+
+  .logo {
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: var(--red);
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+
+  nav a {
+    color: var(--dark);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  nav a:hover {
+    color: var(--red);
+  }
+
+  .hero {
+    min-height: 490px;
+    padding: 85px 7%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background:
+      radial-gradient(circle at 85% 20%, #dcecf5 0, transparent 35%),
+      linear-gradient(135deg, #f7f3ea, #e5f1f7);
+    color: var(--dark);
+  }
+
+  .tag {
+    background: var(--red);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 22px;
+  }
+
+  .hero h1 {
+    font-size: clamp(42px, 8vw, 82px);
+    line-height: 1.05;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 span {
+    color: var(--red);
+  }
+
+  .hero p {
+    max-width: 650px;
+    font-size: 18px;
+    color: #536775;
+    margin-bottom: 28px;
+  }
+
+  .button {
+    display: inline-block;
+    background: var(--red);
+    color: white;
+    text-decoration: none;
+    padding: 13px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.2s;
+  }
+
+  .button:hover {
+    background: var(--dark-red);
+    transform: translateY(-2px);
+  }
+
+  section {
+    padding: 70px 7%;
+  }
+
+  .section-heading {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(28px, 5vw, 42px);
+    margin-bottom: 10px;
+  }
+
+  .section-heading p {
+    color: var(--gray);
+    max-width: 650px;
+    margin: auto;
+  }
+
+  .red-line {
+    height: 5px;
+    width: 65px;
+    background: var(--red);
+    border-radius: 5px;
+    margin: 15px auto;
+  }
+
+  .intro {
+    max-width: 850px;
+    margin: auto;
+    text-align: center;
+    font-size: 17px;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    max-width: 1100px;
+    margin: auto;
+  }
+
+  .card {
+    background: var(--white);
+    padding: 28px;
+    border-radius: 14px;
+    border: 1px solid #e6dfd2;
+    box-shadow: 0 5px 20px rgba(40, 70, 90, 0.06);
+    border-top: 4px solid var(--red);
+  }
+
+  .card .icon {
+    font-size: 35px;
+    margin-bottom: 10px;
+  }
+
+  .card h3 {
+    font-size: 23px;
+    margin-bottom: 12px;
+  }
+
+  .card ul {
+    padding-left: 20px;
+    color: #53616b;
+  }
+
+  .card li {
+    margin-bottom: 8px;
+  }
+
+  .note {
+    font-size: 13px;
+    color: var(--gray);
+    margin-top: 15px;
+  }
+
+  .values {
+    background: #e8f3f8;
+    color: var(--dark);
+  }
+
+  .values .section-heading p {
+    color: #536775;
+  }
+
+  .value-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+    max-width: 1100px;
+    margin: auto;
+  }
+
+  .value {
+    text-align: center;
+    background: #ffffff;
+    border: 1px solid #d7e5eb;
+    border-radius: 12px;
+    padding: 24px 10px;
+  }
+
+  .value strong {
+    display: block;
+    color: var(--dark);
+    font-size: 17px;
+    margin-top: 8px;
+  }
+
+  .value span {
+    font-size: 30px;
+  }
+
+  .team {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    max-width: 1000px;
+    margin: auto;
+  }
+
+  .person {
+    background: var(--white);
+    border: 1px solid #e6dfd2;
+    padding: 24px 18px;
+    text-align: center;
+    border-radius: 12px;
+  }
+
+  .avatar {
+    background: #e2f0f6;
+    border-radius: 50%;
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 12px;
+    display: grid;
+    place-items: center;
+    font-size: 29px;
+  }
+
+  .person h3 {
+    font-size: 18px;
+  }
+
+  .person p {
+    color: var(--gray);
+    font-size: 14px;
+  }
+
+  .democracy {
+    max-width: 850px;
+    margin: 35px auto 0;
+    padding: 25px;
+    background: #f3ecdf;
+    border: 1px solid #e4d9c5;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .questions {
+    background: #f3ecdf;
+    text-align: center;
+  }
+
+  .questions p {
+    max-width: 650px;
+    margin: 0 auto 22px;
+    color: #53616b;
+  }
+
+  footer {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+    padding: 30px 7%;
+  }
+
+  footer strong {
+    color: #8fc4df;
+    font-size: 24px;
+    letter-spacing: 2px;
+  }
+
+  footer p {
+    color: #dce8ed;
+    font-size: 13px;
+    margin-top: 8px;
+  }
+
+  @media (max-width: 700px) {
     header {
-      background: var(--dark);
-      color: var(--white);
-      padding: 18px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .logo {
-      font-size: 30px;
-      font-weight: 900;
-      letter-spacing: 3px;
-      color: var(--red);
+      justify-content: center;
+      text-align: center;
     }
 
     nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: #ff8790;
+      justify-content: center;
     }
 
     .hero {
-      min-height: 490px;
-      padding: 85px 7%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      background:
-        radial-gradient(circle at 85% 20%, #56212d 0, transparent 35%),
-        linear-gradient(135deg, #191923, #30151e);
-      color: white;
-    }
-
-    .tag {
-      background: var(--red);
-      padding: 6px 14px;
-      border-radius: 30px;
-      font-size: 12px;
-      font-weight: bold;
-      letter-spacing: 2px;
-      margin-bottom: 22px;
-    }
-
-    .hero h1 {
-      font-size: clamp(42px, 8vw, 82px);
-      line-height: 1.05;
-      margin-bottom: 20px;
-    }
-
-    .hero h1 span {
-      color: var(--red);
-    }
-
-    .hero p {
-      max-width: 650px;
-      font-size: 18px;
-      color: #e3dce0;
-      margin-bottom: 28px;
-    }
-
-    .button {
-      display: inline-block;
-      background: var(--red);
-      color: white;
-      text-decoration: none;
-      padding: 13px 24px;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: 0.2s;
-    }
-
-    .button:hover {
-      background: var(--dark-red);
-      transform: translateY(-2px);
+      padding: 65px 6%;
     }
 
     section {
-      padding: 70px 7%;
-    }
-
-    .section-heading {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .section-heading h2 {
-      font-size: clamp(28px, 5vw, 42px);
-      margin-bottom: 10px;
-    }
-
-    .section-heading p {
-      color: var(--gray);
-      max-width: 650px;
-      margin: auto;
-    }
-
-    .red-line {
-      height: 5px;
-      width: 65px;
-      background: var(--red);
-      border-radius: 5px;
-      margin: 15px auto;
-    }
-
-    .intro {
-      max-width: 850px;
-      margin: auto;
-      text-align: center;
-      font-size: 17px;
+      padding: 55px 6%;
     }
 
     .cards {
-      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .value-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    .card {
-      background: white;
-      padding: 28px;
-      border-radius: 14px;
-      border: 1px solid #eee0e3;
-      box-shadow: 0 5px 20px rgba(40, 10, 20, 0.04);
-      border-top: 4px solid var(--red);
-    }
-
-    .card .icon {
-      font-size: 35px;
-      margin-bottom: 10px;
-    }
-
-    .card h3 {
-      font-size: 23px;
-      margin-bottom: 12px;
-    }
-
-    .card ul {
-      padding-left: 20px;
-      color: #494953;
-    }
-
-    .card li {
-      margin-bottom: 8px;
-    }
-
-    .note {
-      font-size: 13px;
-      color: var(--gray);
-      margin-top: 15px;
-    }
-
-    .values {
-      background: var(--dark);
-      color: white;
-    }
-
-    .values .section-heading p {
-      color: #d2cbd0;
-    }
- .value-grid {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 14px;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    .value {
-      text-align: center;
-      background: #292934;
-      border-radius: 12px;
-      padding: 24px 10px;
-    }
-
-    .value strong {
-      display: block;
-      color: #ff6977;
-      font-size: 17px;
-      margin-top: 8px;
-    }
-
-    .value span {
-      font-size: 30px;
     }
 
     .team {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      max-width: 1000px;
-      margin: auto;
+      grid-template-columns: 1fr;
     }
-
-    .person {
-      background: white;
-      border: 1px solid #eee0e3;
-      padding: 24px 18px;
-      text-align: center;
-      border-radius: 12px;
-    }
-
-    .avatar {
-      background: #ffe3e6;
-      border-radius: 50%;
-      width: 65px;
-      height: 65px;
-      margin: 0 auto 12px;
-      display: grid;
-      place-items: center;
-      font-size: 29px;
-    }
-
-    .person h3 {
-      font-size: 18px;
-    }
-
-    .person p {
-      color: var(--gray);
-      font-size: 14px;
-    }
-
-    .democracy {
-      max-width: 850px;
-      margin: 35px auto 0;
-      padding: 25px;
-      background: #ffe9eb;
-      border-radius: 12px;
-      text-align: center;
-    }
-
-    .questions {
-      background: #f0e9eb;
-      text-align: center;
-    }
-
-    .questions p {
-      max-width: 650px;
-      margin: 0 auto 22px;
-      color: #494953;
-    }
-
-    footer {
-      background: var(--dark);
-      color: white;
-      text-align: center;
-      padding: 30px 7%;
-    }
-
-    footer strong {
-      color: var(--red);
-      font-size: 24px;
-      letter-spacing: 2px;
-    }
-
-    footer p {
-      color: #d2cbd0;
-      font-size: 13px;
-      margin-top: 8px;
-    }
-
-    @media (max-width: 700px) {
-      header {
-        justify-content: center;
-        text-align: center;
-      }
-
-      nav {
-        justify-content: center;
-      }
-
-      .hero {
-        padding: 65px 6%;
-      }
-
-      section {
-        padding: 55px 6%;
-      }
-
-      .cards {
-        grid-template-columns: 1fr;
-      }
-
-      .value-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .team {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 
 <body>
@@ -520,33 +525,42 @@
 
       <div class="team">
 
-        <div class="person">
-          <div class="avatar">👤</div>
-          <h3>Osoba 1</h3>
-          <p>Przewodniczący/a</p>
-          <p>Koordynacja pracy zespołu.</p>
-        </div>
+  <div class="person">
+    <div class="avatar">👑</div>
+    <h3>Alisa</h3>
+    <p>Przewodnicząca</p>
+    <p>Koordynacja pracy zespołu i reprezentowanie MPWL.</p>
+  </div>
 
-        <div class="person">
-          <div class="avatar">🎤</div>
-          <h3>Osoba 2</h3>
-          <p>Rzecznik prasowy</p>
-          <p>Przedstawianie programu.</p>
-        </div>
+  <div class="person">
+    <div class="avatar">🎤</div>
+    <h3>Krysia</h3>
+    <p>Rzeczniczka prasowa</p>
+    <p>Przedstawianie programu i komunikacja z klasą.</p>
+  </div>
 
-        <div class="person">
-          <div class="avatar">📋</div>
-          <h3>Osoba 3</h3>
-          <p>Program partii</p>
-          <p>Opracowanie postulatów.</p>
-        </div>
+  <div class="person">
+    <div class="avatar">📋</div>
+    <h3>Nelli</h3>
+    <p>Koordynatorka programu</p>
+    <p>Opracowanie i prezentowanie postulatów MPWL.</p>
+  </div>
 
-        <div class="person">
-          <div class="avatar">📣</div>
-          <h3>Osoba 4</h3>
-          <p>Organizacja kampanii</p>
-          <p>Przygotowanie prezentacji i materiałów.</p>
-        </div>
+  <div class="person">
+    <div class="avatar">📣</div>
+    <h3>Basia</h3>
+    <p>Koordynatorka kampanii</p>
+    <p>Organizacja prezentacji i materiałów kampanijnych.</p>
+  </div>
+
+  <div class="person">
+    <div class="avatar">📝</div>
+    <h3>Mira</h3>
+    <p>Sekretarzyni</p>
+    <p>Organizacja spotkań i dokumentacja pracy partii.</p>
+  </div>
+
+</div>
  <div class="person">
           <div class="avatar">📝</div>
           <h3>Osoba 5</h3>
